@@ -32,6 +32,13 @@ class Game:
         self.player = Player(player_initial_position.x,
                              player_initial_position.y)
 
+        # Get collision rectangles
+        self.walls = []
+        for object in tmx_data.objects:
+            if object.type == 'collision':
+                self.walls.append(pygame.Rect(
+                    object.x, object.y, object.width, object.height))
+
         # Draw calc group   (give map data, default = default_layer in order to not have the player behind the water etc.)
         self.group = pyscroll.PyscrollGroup(
             map_layer=map_layer, default_layer=3)
@@ -41,14 +48,22 @@ class Game:
     def handle_input(self):
         pressed_key = pygame.key.get_pressed()
 
-        if pressed_key[pygame.K_UP]:
+        if pressed_key[pygame.K_UP] or pressed_key[pygame.K_z]:
             self.player.move_up()
-        elif pressed_key[pygame.K_DOWN]:
+        elif pressed_key[pygame.K_DOWN] or pressed_key[pygame.K_s]:
             self.player.move_down()
-        elif pressed_key[pygame.K_RIGHT]:
+        elif pressed_key[pygame.K_RIGHT] or pressed_key[pygame.K_d]:
             self.player.move_right()
-        elif pressed_key[pygame.K_LEFT]:
+        elif pressed_key[pygame.K_LEFT] or pressed_key[pygame.K_q]:
             self.player.move_left()
+
+    def update(self):
+        self.group.update()
+
+        # Check collisions
+        for sprite in self.group.sprites():
+            if sprite.feet_position.collidelist(self.walls) > -1:
+                sprite.move_back()
 
     def run(self):
         clock = pygame.time.Clock()
@@ -56,8 +71,9 @@ class Game:
 
         while running:
 
+            self.player.save_position()
             self.handle_input()
-            self.group.update()
+            self.update()
             self.group.center(self.player.rect.center)
             self.group.draw(self.screen)
             pygame.display.flip()  # To reload everything eachtime

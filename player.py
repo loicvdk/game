@@ -15,7 +15,6 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         self.sprite_sheet = pygame.image.load('assets/player.png')
-        self.position = [x, y]
         self.speed = 3
         self.image = self.get_image(0, 0)
         self.image.set_colorkey([0, 0, 0])
@@ -27,6 +26,13 @@ class Player(pygame.sprite.Sprite):
             'right': self.get_image(0, 64),
             'up': self.get_image(0, 96)
         }
+        self.position = [x, y]
+        self.previous_position = self.position.copy()
+        self.feet_position = pygame.Rect(
+            0, 0, self.rect.width / 2, 12)     # abritrary values
+
+    def save_position(self):
+        self.previous_position = self.position.copy()
 
     def change_image(self, direction):
         self.image = self.images[direction]
@@ -53,6 +59,12 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         # Change position to the rectangle which position the player
         self.rect.topleft = self.position
+        self.feet_position.midbottom = self.rect.midbottom
+
+    def move_back(self):
+        """If player enter in collision, retake the previous position"""
+        self.position = self.previous_position
+        self.update()
 
     def get_image(self, x, y):
         image = pygame.Surface([32, 32])

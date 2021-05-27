@@ -20,7 +20,7 @@ class Game:
         self.screen = pygame.display.set_mode((800, 600))
         pygame.display.set_caption('My Game')
 
-        self.map = Map('map', self.screen)
+        self.map = Map('world', self.screen)
 
         # Generate player
         player_initial_position = self.map.tmx_data.get_object_by_name(
@@ -50,10 +50,10 @@ class Game:
 
         # Check house entrance
         if self.player.feet_position.colliderect(self.map.entrance):
-            if self.map.map_name == 'map':
+            if self.map.map_name == 'world':
                 self.switch_map('house')
             elif self.map.map_name == 'house':
-                self.switch_map('map')
+                self.switch_map('world')
             self.map.group.add(self.player)
             self.player.spawn(self.map.tmx_data)
 

@@ -32,13 +32,15 @@ class Player(pygame.sprite.Sprite):
             0, 0, self.rect.width / 2, 12)     # abritrary values
 
     def save_position(self):
+        """Set the self.previous position attribute = to the actual position"""
         self.previous_position = self.position.copy()
 
     def change_image(self, direction):
+        """Set the corresponding image according to the direction pressed"""
         self.image = self.images[direction]
         self.image.set_colorkey([0, 0, 0])
 
-    # Maybe refactor this
+    # Maybe refactor this with return statement
 
     def move_right(self):
         self.change_image('right')
@@ -66,7 +68,12 @@ class Player(pygame.sprite.Sprite):
         self.position = self.previous_position
         self.update()
 
+    def spawn(self, tmx):
+        spawn_point = tmx.get_object_by_name('spawn')
+        self.position = [spawn_point.x, spawn_point.y - 20]
+
     def get_image(self, x, y):
+        """Return the image wanted given a x and y position that should refer to the player.png file"""
         image = pygame.Surface([32, 32])
         image.blit(self.sprite_sheet, (0, 0), (x, y, 32, 32))
         return image

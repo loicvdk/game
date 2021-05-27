@@ -3,16 +3,17 @@
 ############################
 
 import pygame
+from animations import Animation
 
 ############################
 ########## PLAYER ##########
 ############################
 
 
-class Player(pygame.sprite.Sprite):
+class Player(Animation):
 
-    def __init__(self, x, y):
-        super().__init__()
+    def __init__(self, x, y, sprite_name):
+        super().__init__(sprite_name)
 
         self.sprite_sheet = pygame.image.load('assets/player.png')
         self.speed = 3

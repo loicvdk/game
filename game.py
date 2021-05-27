@@ -26,7 +26,8 @@ class Game:
         player_initial_position = self.map.tmx_data.get_object_by_name(
             'initial_position')
         self.player = Player(player_initial_position.x,
-                             player_initial_position.y)
+                             player_initial_position.y,
+                             'player')
 
         self.map.group.add(self.player)
 

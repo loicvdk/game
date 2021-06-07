@@ -1,6 +1,6 @@
 # Basic Game
 ## To-Do List 
-[] 1. Add animations.     
+[x] 1. Add animations.     
 [] 1. Add monsters, dragon.   
 [] 1. Add AI to attack the main character.   
 [] 1. Add inside of the house, ability to take weapon regenerate life etc.   

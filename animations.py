@@ -36,7 +36,7 @@ class Animation(pygame.sprite.Sprite):
         # switch to the next image in the list
         self.current_image_index += random.choices(
             [1, 0],
-            cum_weights=[1, 8],
+            cum_weights=[1, 5],
             k=1
         )[0]
 

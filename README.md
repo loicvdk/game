@@ -1,6 +1,8 @@
 # Basic Game
 ## To-Do List 
-[] Add animations     
-[] Add monsters, dragon   
-[] Add AI to attack the main character   
-[] Add inside of the house, ability to take weapon regenerate life etc.   
+[] 1. Add animations.     
+[] 1. Add monsters, dragon.   
+[] 1. Add AI to attack the main character.   
+[] 1. Add inside of the house, ability to take weapon regenerate life etc.   
+[] 1. Take care of the useless animations.py file.   *
+

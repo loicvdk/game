@@ -7,6 +7,7 @@ import pytmx
 import pyscroll
 from player import Player
 from maps import Map
+from dino import Dino
 
 ##########################
 ########## GAME ##########
@@ -29,7 +30,10 @@ class Game:
                              player_initial_position.y,
                              'player')
 
+        self.dino = Dino(200, 200, 'dino')
+
         self.map.group.add(self.player)
+        self.map.group.add(self.dino)
 
     def handle_input(self):
         pressed_key = pygame.key.get_pressed()

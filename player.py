@@ -15,7 +15,7 @@ class Player(Animation):
     def __init__(self, x, y, sprite_name):
         super().__init__(sprite_name)
 
-        self.speed = 3
+        self.speed = 1.5
         self.position = [x, y]
         self.previous_position = self.position.copy()
         self.feet_position = pygame.Rect(

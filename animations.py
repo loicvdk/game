@@ -58,7 +58,7 @@ def load_images_player(sprite_name, row):
     store the result in the animations dictionnary.
     """
     list_images = []
-    path = "assets/" + sprite_name + ".png"
+    path = f'assets/{sprite_name}.png'
 
     for column in range(3):
         image = pygame.Surface([32, 32])
@@ -73,7 +73,21 @@ def load_images_player(sprite_name, row):
 
 
 def load_images_dragon(sprite_name):
-    pass
+    """Load the different sprites relative to the dino.png and 
+    store the result in the animation dict.
+    """
+    list_images = []
+    path = f'assets/{sprite_name}.png'
+
+    for nbr in range(11):
+        image = pygame.Surface([24, 24])
+        image.blit(
+            pygame.image.load(path),
+            (0, 0),
+            (0, nbr * 24, 24, 24)
+        )
+        list_images.append(image)
+    return list_images
 
 
 ######################################
@@ -87,10 +101,10 @@ animations = {
         'right': load_images_player('player', 2),
         'up': load_images_player('player', 3)
     },
-    'dragon': {
-        'down': [],
-        'left': [],
-        'right': [],
-        'up': []
+    'dino': {
+        'down': load_images_dragon('dino'),
+        'left': load_images_dragon('dino'),
+        'right': load_images_dragon('dino'),
+        'up': load_images_dragon('dino')
     }
 }

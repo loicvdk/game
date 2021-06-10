@@ -10,10 +10,10 @@ from player import Player
 #############################
 
 
-class Dragon(Player):
+class Dino(Player):
 
     def __init__(self, x, y, sprite_name):
-        super().init(x, y, sprite_name)
+        super().__init__(x, y, sprite_name)
 
     def spawn(self):
         pass

@@ -102,9 +102,9 @@ animations = {
         'up': load_images_player('player', 3)
     },
     'dino': {
-        'down': load_images_dragon('dino'),
-        'left': load_images_dragon('dino'),
-        'right': load_images_dragon('dino'),
-        'up': load_images_dragon('dino')
+        'down': load_images_dragon('dino')
+    },
+    'totem': {
+        'burning': 0
     }
 }

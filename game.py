@@ -25,7 +25,7 @@ class Game:
 
         # Generate player
         player_initial_position = self.map.tmx_data.get_object_by_name(
-            'initial_position')
+            'initial_position')  # retrieve tmx _initial position_ coordonate
         self.player = Player(player_initial_position.x,
                              player_initial_position.y,
                              'player')

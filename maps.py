@@ -31,7 +31,7 @@ class Map:
 
         # Draw calc group
         self.group = pyscroll.PyscrollGroup(
-            map_layer=map_layer, default_layer=10)  # 5
+            map_layer=map_layer, default_layer=10)  # default layer = layer of the player
 
         # Define house entrance/exit
         entrance_exit_point = self.tmx_data.get_object_by_name('exit_entrance')
